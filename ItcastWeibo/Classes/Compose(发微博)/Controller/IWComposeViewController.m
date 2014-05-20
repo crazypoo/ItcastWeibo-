@@ -17,7 +17,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "IWComposeToolbar.h"
 #import "IWComposePhotosView.h"
-#import "IWHttpTool.h"
+#import "IWStatusTool.h"
 
 @interface IWComposeViewController () <UITextViewDelegate, IWComposeToolbarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, weak) IWTextView *textView;
@@ -246,28 +246,28 @@
 - (void)sendWithImage
 {
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"status"] = self.textView.text;
-    params[@"access_token"] = [IWAccountTool account].access_token;
-    
-    // 2.封装文件参数
-    NSMutableArray *formDataArray = [NSMutableArray array];
-    NSArray *images = [self.photosView totalImages];
-    for (UIImage *image in images) {
-        IWFormData *formData = [[IWFormData alloc] init];
-        formData.data = UIImageJPEGRepresentation(image, 0.000001);
-        formData.name = @"pic";
-        formData.mimeType = @"image/jpeg";
-        formData.filename = @"";
-        [formDataArray addObject:formData];
-    }
-    
-    // 3.发送请求
-    [IWHttpTool postWithURL:@"https://upload.api.weibo.com/2/statuses/upload.json" params:params formDataArray:formDataArray success:^(id json) {
-        [MBProgressHUD showSuccess:@"发送成功"];
-    } failure:^(NSError *error) {
-        [MBProgressHUD showError:@"发送失败"];
-    }];
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    params[@"status"] = self.textView.text;
+//    params[@"access_token"] = [IWAccountTool account].access_token;
+//    
+//    // 2.封装文件参数
+//    NSMutableArray *formDataArray = [NSMutableArray array];
+//    NSArray *images = [self.photosView totalImages];
+//    for (UIImage *image in images) {
+//        IWFormData *formData = [[IWFormData alloc] init];
+//        formData.data = UIImageJPEGRepresentation(image, 0.000001);
+//        formData.name = @"pic";
+//        formData.mimeType = @"image/jpeg";
+//        formData.filename = @"";
+//        [formDataArray addObject:formData];
+//    }
+//    
+//    // 3.发送请求
+//    [IWHttpTool postWithURL:@"https://upload.api.weibo.com/2/statuses/upload.json" params:params formDataArray:formDataArray success:^(id json) {
+//        [MBProgressHUD showSuccess:@"发送成功"];
+//    } failure:^(NSError *error) {
+//        [MBProgressHUD showError:@"发送失败"];
+//    }];
 }
 
 /**
@@ -276,15 +276,14 @@
 - (void)sendWithoutImage
 {
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"status"] = self.textView.text;
-    params[@"access_token"] = [IWAccountTool account].access_token;
+    IWSendStatusParam *param = [IWSendStatusParam param];
+    param.status = self.textView.text;
     
     // 2.发送请求
-    [IWHttpTool postWithURL:@"https://api.weibo.com/2/statuses/update.json" params:params success:^(id json) {
+    [IWStatusTool sendStatusWithParam:param success:^(IWSendStatusResult *result) {
         [MBProgressHUD showSuccess:@"发送成功"];
-     } failure:^(NSError *error) {
-         [MBProgressHUD showError:@"发送失败"];
-     }];
+    } failure:^(NSError *error) {
+        [MBProgressHUD showError:@"发送失败"];
+    }];
 }
 @end

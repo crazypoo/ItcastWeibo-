@@ -40,7 +40,16 @@
 		082BF407192998FE0034484F /* IWTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 082BF406192998FE0034484F /* IWTextView.m */; };
 		082BF40A1929B0390034484F /* IWComposeToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 082BF4091929B0390034484F /* IWComposeToolbar.m */; };
 		083508F4192AE62A00F81A6C /* IWStatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 083508F3192AE62A00F81A6C /* IWStatusTool.m */; };
-		083508F7192AEA3900F81A6C /* IWHomeStatusesParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 083508F6192AEA3900F81A6C /* IWHomeStatusesParam.m */; };
+		083508FD192AF67E00F81A6C /* IWUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 083508FC192AF67E00F81A6C /* IWUserTool.m */; };
+		0835090E192AF70B00F81A6C /* IWHomeStatusesParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 08350906192AF70B00F81A6C /* IWHomeStatusesParam.m */; };
+		0835090F192AF70B00F81A6C /* IWHomeStatusesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 08350908192AF70B00F81A6C /* IWHomeStatusesResult.m */; };
+		08350910192AF70B00F81A6C /* IWUserInfoParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835090B192AF70B00F81A6C /* IWUserInfoParam.m */; };
+		08350911192AF70B00F81A6C /* IWUserInfoResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835090D192AF70B00F81A6C /* IWUserInfoResult.m */; };
+		08350915192AFA3F00F81A6C /* IWSendStatusParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 08350914192AFA3F00F81A6C /* IWSendStatusParam.m */; };
+		08350918192AFA4900F81A6C /* IWSendStatusResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 08350917192AFA4900F81A6C /* IWSendStatusResult.m */; };
+		0835091C192AFBD900F81A6C /* IWBaseParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835091B192AFBD900F81A6C /* IWBaseParam.m */; };
+		08350920192B041700F81A6C /* IWUserUnreadCountParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 0835091F192B041700F81A6C /* IWUserUnreadCountParam.m */; };
+		08350923192B045200F81A6C /* IWUserUnreadCountResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 08350922192B045200F81A6C /* IWUserUnreadCountResult.m */; };
 		083E0BAC1918C2D20008EA6B /* IWPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 083E0BAB1918C2D20008EA6B /* IWPageControl.m */; };
 		085052E1191C66AC006484D8 /* IWStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 085052E0191C66AC006484D8 /* IWStatusCell.m */; };
 		085052E4191C7A27006484D8 /* IWStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 085052E3191C7A27006484D8 /* IWStatusFrame.m */; };
@@ -191,8 +200,26 @@
 		082BF4091929B0390034484F /* IWComposeToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWComposeToolbar.m; sourceTree = "<group>"; };
 		083508F2192AE62A00F81A6C /* IWStatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWStatusTool.h; sourceTree = "<group>"; };
 		083508F3192AE62A00F81A6C /* IWStatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWStatusTool.m; sourceTree = "<group>"; };
-		083508F5192AEA3900F81A6C /* IWHomeStatusesParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWHomeStatusesParam.h; sourceTree = "<group>"; };
-		083508F6192AEA3900F81A6C /* IWHomeStatusesParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWHomeStatusesParam.m; sourceTree = "<group>"; };
+		083508FB192AF67E00F81A6C /* IWUserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWUserTool.h; sourceTree = "<group>"; };
+		083508FC192AF67E00F81A6C /* IWUserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWUserTool.m; sourceTree = "<group>"; };
+		08350905192AF70B00F81A6C /* IWHomeStatusesParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWHomeStatusesParam.h; sourceTree = "<group>"; };
+		08350906192AF70B00F81A6C /* IWHomeStatusesParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWHomeStatusesParam.m; sourceTree = "<group>"; };
+		08350907192AF70B00F81A6C /* IWHomeStatusesResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWHomeStatusesResult.h; sourceTree = "<group>"; };
+		08350908192AF70B00F81A6C /* IWHomeStatusesResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWHomeStatusesResult.m; sourceTree = "<group>"; };
+		0835090A192AF70B00F81A6C /* IWUserInfoParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWUserInfoParam.h; sourceTree = "<group>"; };
+		0835090B192AF70B00F81A6C /* IWUserInfoParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWUserInfoParam.m; sourceTree = "<group>"; };
+		0835090C192AF70B00F81A6C /* IWUserInfoResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWUserInfoResult.h; sourceTree = "<group>"; };
+		0835090D192AF70B00F81A6C /* IWUserInfoResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWUserInfoResult.m; sourceTree = "<group>"; };
+		08350913192AFA3F00F81A6C /* IWSendStatusParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWSendStatusParam.h; sourceTree = "<group>"; };
+		08350914192AFA3F00F81A6C /* IWSendStatusParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWSendStatusParam.m; sourceTree = "<group>"; };
+		08350916192AFA4900F81A6C /* IWSendStatusResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWSendStatusResult.h; sourceTree = "<group>"; };
+		08350917192AFA4900F81A6C /* IWSendStatusResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWSendStatusResult.m; sourceTree = "<group>"; };
+		0835091A192AFBD900F81A6C /* IWBaseParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWBaseParam.h; sourceTree = "<group>"; };
+		0835091B192AFBD900F81A6C /* IWBaseParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWBaseParam.m; sourceTree = "<group>"; };
+		0835091E192B041700F81A6C /* IWUserUnreadCountParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWUserUnreadCountParam.h; sourceTree = "<group>"; };
+		0835091F192B041700F81A6C /* IWUserUnreadCountParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWUserUnreadCountParam.m; sourceTree = "<group>"; };
+		08350921192B045200F81A6C /* IWUserUnreadCountResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWUserUnreadCountResult.h; sourceTree = "<group>"; };
+		08350922192B045200F81A6C /* IWUserUnreadCountResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWUserUnreadCountResult.m; sourceTree = "<group>"; };
 		083E0BAA1918C2D20008EA6B /* IWPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPageControl.h; sourceTree = "<group>"; };
 		083E0BAB1918C2D20008EA6B /* IWPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWPageControl.m; sourceTree = "<group>"; };
 		085052DF191C66AC006484D8 /* IWStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWStatusCell.h; sourceTree = "<group>"; };
@@ -527,6 +554,9 @@
 		0829D8E119173977005E4B1D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0835091D192B040200F81A6C /* UserUnreadCount */,
+				08350904192AF70B00F81A6C /* HomeStatuses */,
+				08350909192AF70B00F81A6C /* UserInfo */,
 				0863B9E5191B757900B6BA5F /* IWStatus.h */,
 				0863B9E6191B757900B6BA5F /* IWStatus.m */,
 				085052E2191C7A27006484D8 /* IWStatusFrame.h */,
@@ -535,8 +565,6 @@
 				0863B9E9191B76DC00B6BA5F /* IWUser.m */,
 				08AFD1B4191F2B7600F4A911 /* IWPhoto.h */,
 				08AFD1B5191F2B7600F4A911 /* IWPhoto.m */,
-				083508F5192AEA3900F81A6C /* IWHomeStatusesParam.h */,
-				083508F6192AEA3900F81A6C /* IWHomeStatusesParam.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -672,6 +700,7 @@
 		0829D8F519173977005E4B1D /* Other(其他) */ = {
 			isa = PBXGroup;
 			children = (
+				08350919192AFBCB00F81A6C /* Model */,
 				086EF0C71929F83600A9EF6D /* Tool */,
 				0863B95B191B1DAC00B6BA5F /* Lib */,
 				0829D90419173CE3005E4B1D /* Category */,
@@ -702,6 +731,7 @@
 		082BF3FF192996630034484F /* Compose(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				08350912192AFA3100F81A6C /* Model */,
 				082BF404192998F00034484F /* View */,
 				082BF400192996630034484F /* Controller */,
 			);
@@ -735,8 +765,63 @@
 			children = (
 				083508F2192AE62A00F81A6C /* IWStatusTool.h */,
 				083508F3192AE62A00F81A6C /* IWStatusTool.m */,
+				083508FB192AF67E00F81A6C /* IWUserTool.h */,
+				083508FC192AF67E00F81A6C /* IWUserTool.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		08350904192AF70B00F81A6C /* HomeStatuses */ = {
+			isa = PBXGroup;
+			children = (
+				08350905192AF70B00F81A6C /* IWHomeStatusesParam.h */,
+				08350906192AF70B00F81A6C /* IWHomeStatusesParam.m */,
+				08350907192AF70B00F81A6C /* IWHomeStatusesResult.h */,
+				08350908192AF70B00F81A6C /* IWHomeStatusesResult.m */,
+			);
+			path = HomeStatuses;
+			sourceTree = "<group>";
+		};
+		08350909192AF70B00F81A6C /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				0835090A192AF70B00F81A6C /* IWUserInfoParam.h */,
+				0835090B192AF70B00F81A6C /* IWUserInfoParam.m */,
+				0835090C192AF70B00F81A6C /* IWUserInfoResult.h */,
+				0835090D192AF70B00F81A6C /* IWUserInfoResult.m */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		08350912192AFA3100F81A6C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08350913192AFA3F00F81A6C /* IWSendStatusParam.h */,
+				08350914192AFA3F00F81A6C /* IWSendStatusParam.m */,
+				08350916192AFA4900F81A6C /* IWSendStatusResult.h */,
+				08350917192AFA4900F81A6C /* IWSendStatusResult.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		08350919192AFBCB00F81A6C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0835091A192AFBD900F81A6C /* IWBaseParam.h */,
+				0835091B192AFBD900F81A6C /* IWBaseParam.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0835091D192B040200F81A6C /* UserUnreadCount */ = {
+			isa = PBXGroup;
+			children = (
+				0835091E192B041700F81A6C /* IWUserUnreadCountParam.h */,
+				0835091F192B041700F81A6C /* IWUserUnreadCountParam.m */,
+				08350921192B045200F81A6C /* IWUserUnreadCountResult.h */,
+				08350922192B045200F81A6C /* IWUserUnreadCountResult.m */,
+			);
+			path = UserUnreadCount;
 			sourceTree = "<group>";
 		};
 		0863B956191B141200B6BA5F /* OAuth(授权) */ = {
@@ -1071,9 +1156,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08350918192AFA4900F81A6C /* IWSendStatusResult.m in Sources */,
 				086E63931918803100DDB83F /* UIBarButtonItem+MJ.m in Sources */,
 				082BF407192998FE0034484F /* IWTextView.m in Sources */,
 				0863B98A191B36AC00B6BA5F /* MBProgressHUD+MJ.m in Sources */,
+				08350911192AF70B00F81A6C /* IWUserInfoResult.m in Sources */,
 				08F5B3111920B1350078735A /* MJRefreshHeaderView.m in Sources */,
 				0829D90A19173FFE005E4B1D /* IWTabBar.m in Sources */,
 				08AFD1AD191F069700F4A911 /* IWStatusToolbar.m in Sources */,
@@ -1081,7 +1168,7 @@
 				0863B974191B1DAC00B6BA5F /* AFSecurityPolicy.m in Sources */,
 				0863B9FF191B7C1D00B6BA5F /* MJArgument.m in Sources */,
 				085052E1191C66AC006484D8 /* IWStatusCell.m in Sources */,
-				083508F7192AEA3900F81A6C /* IWHomeStatusesParam.m in Sources */,
+				083508FD192AF67E00F81A6C /* IWUserTool.m in Sources */,
 				0863B971191B1DAC00B6BA5F /* AFHTTPRequestOperationManager.m in Sources */,
 				0863B970191B1DAC00B6BA5F /* AFHTTPRequestOperation.m in Sources */,
 				0863BA07191B7C1D00B6BA5F /* NSObject+MJMember.m in Sources */,
@@ -1103,24 +1190,30 @@
 				0863BA04191B7C1D00B6BA5F /* MJTypeEncoding.m in Sources */,
 				0825CA3E191F73EA0013C81A /* IWPhotoView.m in Sources */,
 				0863BA01191B7C1D00B6BA5F /* MJMember.m in Sources */,
+				0835090F192AF70B00F81A6C /* IWHomeStatusesResult.m in Sources */,
 				0863B9DA191B6E5B00B6BA5F /* SDWebImageCompat.m in Sources */,
 				0863B9DC191B6E5B00B6BA5F /* SDWebImageDownloader.m in Sources */,
 				0863B9DD191B6E5B00B6BA5F /* SDWebImageDownloaderOperation.m in Sources */,
 				0863BA06191B7C1D00B6BA5F /* NSObject+MJKeyValue.m in Sources */,
 				0863B9DB191B6E5B00B6BA5F /* SDWebImageDecoder.m in Sources */,
 				086EF0C61929EA5A00A9EF6D /* IWComposePhotosView.m in Sources */,
+				08350915192AFA3F00F81A6C /* IWSendStatusParam.m in Sources */,
 				086EF0CA1929F84200A9EF6D /* IWHttpTool.m in Sources */,
+				08350910192AF70B00F81A6C /* IWUserInfoParam.m in Sources */,
 				0863B9DE191B6E5B00B6BA5F /* SDWebImageManager.m in Sources */,
 				080883E119205BD900A6840F /* MJPhoto.m in Sources */,
 				082BF40A1929B0390034484F /* IWComposeToolbar.m in Sources */,
+				08350920192B041700F81A6C /* IWUserUnreadCountParam.m in Sources */,
 				0829D8FC19173977005E4B1D /* IWTabBarViewController.m in Sources */,
 				086E63901918724500DDB83F /* IWNavigationController.m in Sources */,
 				0863B98C191B36AC00B6BA5F /* MBProgressHUD.m in Sources */,
+				0835090E192AF70B00F81A6C /* IWHomeStatusesParam.m in Sources */,
 				0863B972191B1DAC00B6BA5F /* AFHTTPSessionManager.m in Sources */,
 				0829D8FA19173977005E4B1D /* IWDiscoverViewController.m in Sources */,
 				08CE627B191788E1002DA6BF /* IWBadgeButton.m in Sources */,
 				0863B975191B1DAC00B6BA5F /* AFURLConnectionOperation.m in Sources */,
 				0863B97F191B2EB100B6BA5F /* IWWeiboTool.m in Sources */,
+				0835091C192AFBD900F81A6C /* IWBaseParam.m in Sources */,
 				082BF403192996750034484F /* IWComposeViewController.m in Sources */,
 				080883E519205BD900A6840F /* MJPhotoProgressView.m in Sources */,
 				0863B976191B1DAC00B6BA5F /* AFURLRequestSerialization.m in Sources */,
@@ -1128,6 +1221,7 @@
 				0863B9D7191B6E5B00B6BA5F /* MKAnnotationView+WebCache.m in Sources */,
 				0863B9E2191B6E5B00B6BA5F /* UIImage+MultiFormat.m in Sources */,
 				0863BA02191B7C1D00B6BA5F /* MJMethod.m in Sources */,
+				08350923192B045200F81A6C /* IWUserUnreadCountResult.m in Sources */,
 				0863BA05191B7C1D00B6BA5F /* NSObject+MJCoding.m in Sources */,
 				0863B9EA191B76DC00B6BA5F /* IWUser.m in Sources */,
 				0863B977191B1DAC00B6BA5F /* AFURLResponseSerialization.m in Sources */,

@@ -9,14 +9,28 @@
 #import "IWStatusTool.h"
 #import "IWHttpTool.h"
 #import "MJExtension.h"
-#import "IWHomeStatusesParam.h"
 
 @implementation IWStatusTool
-+ (void)homeStatusesWithParam:(IWHomeStatusesParam *)param success:(void (^)(id))success failure:(void (^)(NSError *))failure
++ (void)homeStatusesWithParam:(IWHomeStatusesParam *)param success:(void (^)(IWHomeStatusesResult *))success failure:(void (^)(NSError *))failure
 {
     [IWHttpTool getWithURL:@"https://api.weibo.com/2/statuses/home_timeline.json" params:param.keyValues success:^(id json) {
         if (success) {
-            success(json);
+            IWHomeStatusesResult *result = [IWHomeStatusesResult objectWithKeyValues:json];
+            success(result);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
++ (void)sendStatusWithParam:(IWSendStatusParam *)param success:(void (^)(IWSendStatusResult *))success failure:(void (^)(NSError *))failure
+{
+    [IWHttpTool postWithURL:@"https://api.weibo.com/2/statuses/update.json" params:param.keyValues success:^(id json) {
+        if (success) {
+            IWSendStatusResult *result = [IWSendStatusResult objectWithKeyValues:json];
+            success(result);
         }
     } failure:^(NSError *error) {
         if (failure) {
