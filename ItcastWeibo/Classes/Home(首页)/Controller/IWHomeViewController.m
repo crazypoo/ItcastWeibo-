@@ -21,6 +21,8 @@
 #import "IWUser.h"
 #import "MJRefresh.h"
 #import "IWHttpTool.h"
+#import "IWStatusTool.h"
+#import "IWHomeStatusesParam.h"
 
 @interface IWHomeViewController () <MJRefreshBaseViewDelegate>
 @property (nonatomic, weak) IWTitleButton *titleButton;
@@ -126,18 +128,17 @@
 - (void)loadMoreData
 {
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = [IWAccountTool account].access_token;
-    params[@"count"] = @5;
+    IWHomeStatusesParam *param = [[IWHomeStatusesParam alloc] init];
+    param.access_token = [IWAccountTool account].access_token;
+    param.count = 5;
     if (self.statusFrames.count) {
         IWStatusFrame *statusFrame = [self.statusFrames lastObject];
         // 加载ID <= max_id的微博
-        long long maxId = [statusFrame.status.idstr longLongValue] - 1;
-        params[@"max_id"] = @(maxId);
+        param.max_id = [statusFrame.status.idstr longLongValue] - 1;
     }
     
     // 2.发送请求
-    [IWHttpTool getWithURL:@"https://api.weibo.com/2/statuses/home_timeline.json" params:params success:^(id json) {
+    [IWStatusTool homeStatusesWithParam:param success:^(id json) {
         // 将字典数组转为模型数组(里面放的就是IWStatus模型)
         NSArray *statusArray = [IWStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
         // 创建frame模型对象
@@ -169,17 +170,16 @@
 - (void)loadNewData
 {
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = [IWAccountTool account].access_token;
-    params[@"count"] = @5;
+    IWHomeStatusesParam *param = [[IWHomeStatusesParam alloc] init];
+    param.access_token = [IWAccountTool account].access_token;
+    param.count = 5;
     if (self.statusFrames.count) {
         IWStatusFrame *statusFrame = self.statusFrames[0];
-        // 加载ID比since_id大的微博
-        params[@"since_id"] = statusFrame.status.idstr;
+        param.since_id = [statusFrame.status.idstr longLongValue];
     }
     
     // 2.发送请求
-    [IWHttpTool getWithURL:@"https://api.weibo.com/2/statuses/home_timeline.json" params:params success:^(id json) {
+    [IWStatusTool homeStatusesWithParam:param success:^(id json) {
         // 将字典数组转为模型数组(里面放的就是IWStatus模型)
         NSArray *statusArray = [IWStatus objectArrayWithKeyValuesArray:json[@"statuses"]];
         // 创建frame模型对象
