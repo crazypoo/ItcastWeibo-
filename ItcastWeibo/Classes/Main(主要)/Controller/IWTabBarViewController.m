@@ -45,7 +45,8 @@
     [self setupAllChildViewControllers];
     
     // 定时检查未读数
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(checkUnreadCount) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(checkUnreadCount) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 /**
@@ -53,6 +54,8 @@
  */
 - (void)checkUnreadCount
 {
+//    IWLog(@"checkUnreadCount-----");
+    
     // 1.请求参数
     IWUserUnreadCountParam *param = [IWUserUnreadCountParam param];
     param.uid = @([IWAccountTool account].uid);
@@ -68,6 +71,9 @@
         
         // 3.3.我
         self.me.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", result.follower];
+        
+        // 4.设置图标右上角的数字
+        [UIApplication sharedApplication].applicationIconBadgeNumber = result.count;
     } failure:^(NSError *error) {
         
     }];

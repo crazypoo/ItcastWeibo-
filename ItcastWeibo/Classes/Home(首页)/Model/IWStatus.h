@@ -49,9 +49,9 @@
  *  微博的作者
  */
 @property (nonatomic, strong) IWUser *user;
+
 /**
  *  被转发的微博
  */
 @property (nonatomic, strong) IWStatus *retweeted_status;
-
 @end
