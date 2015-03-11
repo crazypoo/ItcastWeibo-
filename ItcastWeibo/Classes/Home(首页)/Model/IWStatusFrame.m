@@ -53,7 +53,7 @@
     // 5.时间
     CGFloat timeLabelX = nameLabelX;
     CGFloat timeLabelY = CGRectGetMaxY(_nameLabelF) + IWStatusCellBorder * 0.5;
-    CGSize timeLabelSize = [status.created_at sizeWithFont:IWStatusTimeFont];
+    CGSize timeLabelSize = [status.createdTime sizeWithFont:IWStatusTimeFont];
     _timeLabelF = (CGRect){{timeLabelX, timeLabelY}, timeLabelSize};
     
     // 6.来源

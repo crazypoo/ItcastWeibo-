@@ -8,7 +8,8 @@
 
 #import "IWAccount.h"
 #import "IWAccountTool.h"
-
+#import "IWHttpTool.h"
+#import "MJExtension.h"
 #define IWAccountFile [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.data"]
 
 @implementation IWAccountTool
@@ -33,5 +34,19 @@
     } else { // 过期
         return nil;
     }
+}
+
++ (void)accessTokenWithParam:(IWAccessTokenParam *)param success:(void (^)(IWAccessTokenResult *result))success failure:(void (^)(NSError *error))failure
+{
+    [IWHttpTool postWithURL:@"https://api.weibo.com/oauth2/access_token" params:param.keyValues success:^(id json) {
+        if (success) {
+            IWAccessTokenResult *result = [IWAccessTokenResult objectWithKeyValues:json];
+            success(result);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
 @end

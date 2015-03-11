@@ -9,55 +9,62 @@
 #import "IWStatusCacheTool.h"
 #import "IWAccount.h"
 #import "IWAccountTool.h"
+#import "IWStatus.h"
 #import "FMDB.h"
 
 @implementation IWStatusCacheTool
 
 static FMDatabaseQueue *_queue;
 
-+ (void)initialize
++ (void)setup
 {
     // 0.获得沙盒中的数据库文件名
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"statuses.sqlite"];
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"statuses.sqlite"];
     
     // 1.创建队列
     _queue = [FMDatabaseQueue databaseQueueWithPath:path];
     
     // 2.创表
     [_queue inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:@"create table if not exists t_status (id integer primary key autoincrement, access_token text, idstr text, dict blob);"];
+        [db executeUpdate:@"create table if not exists t_status (id integer primary key autoincrement, access_token text, idstr text, status blob);"];
     }];
 }
 
-+ (void)addStatuses:(NSArray *)dictArray
++ (void)addStatuses:(NSArray *)statusArray
 {
-    for (NSDictionary *dict in dictArray) {
-        [self addStatus:dict];
+    for (IWStatus *status in statusArray) {
+        [self addStatus:status];
     }
 }
 
-+ (void)addStatus:(NSDictionary *)dict
++ (void)addStatus:(IWStatus *)status
 {
+    [self setup];
+    
     [_queue inDatabase:^(FMDatabase *db) {
         // 1.获得需要存储的数据
         NSString *accessToken = [IWAccountTool account].access_token;
-        NSString *idstr = dict[@"idstr"];
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dict];
+        NSString *idstr = status.idstr;
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:status];
         
         // 2.存储数据
-        [db executeUpdate:@"insert into t_status (access_token, idstr, dict) values(?, ? , ?)", accessToken, idstr, data];
+        [db executeUpdate:@"insert into t_status (access_token, idstr, status) values(?, ? , ?)", accessToken, idstr, data];
     }];
+    
+    [_queue close];
 }
 
 + (NSArray *)statuesWithParam:(IWHomeStatusesParam *)param
 {
+    [self setup];
+    
     // 1.定义数组
-    __block NSMutableArray *dictArray = nil;
+    __block NSMutableArray *statusArray = nil;
     
     // 2.使用数据库
     [_queue inDatabase:^(FMDatabase *db) {
         // 创建数组
-        dictArray = [NSMutableArray array];
+        statusArray = [NSMutableArray array];
         
         // accessToken
         NSString *accessToken = [IWAccountTool account].access_token;
@@ -72,14 +79,15 @@ static FMDatabaseQueue *_queue;
         }
         
         while (rs.next) {
-            NSData *data = [rs dataForColumn:@"dict"];
-            NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-            [dictArray addObject:dict];
+            NSData *data = [rs dataForColumn:@"status"];
+            IWStatus *status = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            [statusArray addObject:status];
         }
     }];
+    [_queue close];
     
     // 3.返回数据
-    return dictArray;
+    return statusArray;
 }
 
 @end

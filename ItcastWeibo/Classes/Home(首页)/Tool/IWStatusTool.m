@@ -15,24 +15,23 @@
 + (void)homeStatusesWithParam:(IWHomeStatusesParam *)param success:(void (^)(IWHomeStatusesResult *))success failure:(void (^)(NSError *))failure
 {
     // 1.先从缓存里面加载
-    NSArray *dictArray = [IWStatusCacheTool statuesWithParam:param];
-    if (dictArray.count) { // 有缓存
+    NSArray *statusArray = [IWStatusCacheTool statuesWithParam:param];
+    if (statusArray.count) { // 有缓存
         // 传递了block
         if (success) {
             IWHomeStatusesResult *result = [[IWHomeStatusesResult alloc] init];
-            
-            result.statuses = [IWStatus objectArrayWithKeyValuesArray:dictArray];
-            
+            result.statuses = statusArray;
             success(result);
         }
     } else {
         [IWHttpTool getWithURL:@"https://api.weibo.com/2/statuses/home_timeline.json" params:param.keyValues success:^(id json) {
+            IWHomeStatusesResult *result = [IWHomeStatusesResult objectWithKeyValues:json];
+            
             // 缓存
-            [IWStatusCacheTool addStatuses:json[@"statuses"]];
+            [IWStatusCacheTool addStatuses:result.statuses];
             
             // 传递了block
             if (success) {
-                IWHomeStatusesResult *result = [IWHomeStatusesResult objectWithKeyValues:json];
                 success(result);
             }
         } failure:^(NSError *error) {

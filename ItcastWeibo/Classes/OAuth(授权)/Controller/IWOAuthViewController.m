@@ -11,7 +11,6 @@
 #import "IWWeiboTool.h"
 #import "MBProgressHUD+MJ.h"
 #import "IWAccountTool.h"
-#import "IWHttpTool.h"
 
 @interface IWOAuthViewController () <UIWebViewDelegate>
 
@@ -100,25 +99,22 @@
 - (void)accessTokenWithCode:(NSString *)code
 {
     // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"client_id"] = IWAppKey;
-    params[@"client_secret"] = IWAppSecret;
-    params[@"grant_type"] = @"authorization_code";
-    params[@"code"] = code;
-    params[@"redirect_uri"] = IWRedirectURI;
+    IWAccessTokenParam *param = [[IWAccessTokenParam alloc] init];
+    param.client_id = IWAppKey;
+    param.client_secret = IWAppSecret;
+    param.grant_type = @"authorization_code";
+    param.code = code;
+    param.redirect_uri = IWRedirectURI;
     
     // 2.发送请求
-    [IWHttpTool postWithURL:@"https://api.weibo.com/oauth2/access_token" params:params success:^(id json) {
-        // 4.先将字典转为模型
-        IWAccount *account = [IWAccount accountWithDict:json];
-
-        // 5.存储模型数据
-        [IWAccountTool saveAccount:account];
-
-        // 6.新特性\去首页
+    [IWAccountTool accessTokenWithParam:param success:^(IWAccessTokenResult *result) {
+        // 3.存储模型数据
+        [IWAccountTool saveAccount:result];
+        
+        // 4.新特性\去首页
         [IWWeiboTool chooseRootController];
-
-        // 7.隐藏提醒框
+        
+        // 5.隐藏提醒框
         [MBProgressHUD hideHUD];
     } failure:^(NSError *error) {
         // 隐藏提醒框

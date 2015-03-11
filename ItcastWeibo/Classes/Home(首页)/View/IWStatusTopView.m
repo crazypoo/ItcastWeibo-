@@ -132,10 +132,10 @@
     }
     
     // 5.时间
-    self.timeLabel.text = status.created_at;
+    self.timeLabel.text = status.createdTime;
     CGFloat timeLabelX = self.statusFrame.nameLabelF.origin.x;
     CGFloat timeLabelY = CGRectGetMaxY(self.statusFrame.nameLabelF) + IWStatusCellBorder * 0.5;
-    CGSize timeLabelSize = [status.created_at sizeWithFont:IWStatusTimeFont];
+    CGSize timeLabelSize = [status.createdTime sizeWithFont:IWStatusTimeFont];
     self.timeLabel.frame = (CGRect){{timeLabelX, timeLabelY}, timeLabelSize};
     
     // 6.来源

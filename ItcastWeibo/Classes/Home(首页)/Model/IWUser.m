@@ -7,6 +7,8 @@
 //
 
 #import "IWUser.h"
+#import "MJExtension.h"
 
 @implementation IWUser
+MJCodingImplementation
 @end

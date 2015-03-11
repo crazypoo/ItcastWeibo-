@@ -18,7 +18,7 @@
     return @{@"pic_urls" : [IWPhoto class]};
 }
 
-- (NSString *)created_at
+- (NSString *)createdTime
 {
     // _created_at == Fri May 09 16:30:34 +0800 2014
     // 1.获得微博的发送时间
@@ -51,10 +51,18 @@
 
 - (void)setSource:(NSString *)source
 {
-    int loc = [source rangeOfString:@">"].location + 1;
-    int length = [source rangeOfString:@"</"].location - loc;
-    source = [source substringWithRange:NSMakeRange(loc, length)];
-    
-    _source = [NSString stringWithFormat:@"来自%@", source];
+    int jianLoc = [source rangeOfString:@">"].location;
+    if (jianLoc == NSNotFound) {
+        _source = [source copy];
+    } else {
+        int loc = jianLoc + 1;
+        int length = [source rangeOfString:@"</"].location - loc;
+        source = [source substringWithRange:NSMakeRange(loc, length)];
+        
+        _source = [NSString stringWithFormat:@"来自%@", source];
+    }
 }
+
+MJCodingImplementation
+
 @end
